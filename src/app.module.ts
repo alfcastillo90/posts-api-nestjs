@@ -7,12 +7,12 @@ import { PostModule } from './post/post.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: `.env.${process.env.NODE_ENV || 'dev'}`,
+      envFilePath: `.env.dev`,
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URL'),
+      useFactory: () => ({
+        uri: 'mongodb+srv://alfre:alfrassvetdam90@cluster0.z0tzn.mongodb.net/?retryWrites=true&w=majority',
       }),
       inject: [ConfigService],
     }),
