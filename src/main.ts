@@ -9,7 +9,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 
   const server = app.getHttpServer();
   const router = server._events.request._router;
